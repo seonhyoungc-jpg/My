@@ -10,8 +10,18 @@
 ③ 작성         →  3_draft.md
 ④ 편집·검수(QA) →  4_qa_report.md   ─┐ FAIL이면 ③으로 되돌림
 ⑤ 이미지 메이커 →  5_image_prompts.md + images/
+⑦ 영상 콘텐츠   →  7_video_plan.md + videos/   (영상포함 글만)
 ⑥ 조립·발행    →  final_post.md
+⑧ 검색 노출·추적 → 8_tracking_report.md   (발행 후 D+3/D+7) → ①로 피드백
 ```
+
+> ⑦ 영상은 ⑤ 이미지와 병렬로 진행 가능하며, 둘 다 ⑥ 조립의 입력이 된다.
+> ⑧ 추적은 발행 후 실행되어 성과를 ①(기획)의 다음 주제 선정에 피드백한다(개선 루프).
+
+## 스케줄 연동
+- 발행 리듬·리드타임은 `workflow/content_calendar.md` (주 3일)
+- 진행 상태는 Google Sheets/Notion 콘텐츠 보드(`templates/content_board.csv`)의 `Status`로 관리
+- 예약 발행·리마인더는 `guides/scheduling_guide.md`
 
 ## 상태 게이트
 - **④ QA는 품질 게이트다.** PASS 전에는 ⑤/⑥로 넘어가지 않는다.

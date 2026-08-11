@@ -14,7 +14,7 @@
 
 ---
 
-## 👥 에이전트 팀 (6명)
+## 👥 에이전트 팀 (8명)
 
 | # | 에이전트 | 파일 | 역할 요약 |
 |---|----------|------|-----------|
@@ -24,6 +24,8 @@
 | 4 | 편집·검수(QA) | `agents/04_editor_qa.md` | 중간 테스트(체크리스트) 실행, 통과/반려 판정 |
 | 5 | 이미지 메이커 | `agents/05_image_maker.md` | 섹션별 이미지 프롬프트/썸네일 기획 및 생성 |
 | 6 | 조립·발행 | `agents/06_assembler.md` | 모든 산출물을 발행용 패키지로 조립 |
+| 7 | 영상 콘텐츠 | `agents/07_video_maker.md` | 숏폼/클립 기획·생성 (영상포함 글) |
+| 8 | 검색 노출·추적 | `agents/08_analytics_tracker.md` | 발행 후 네이버 검색 노출·성과 추적, 개선 루프 |
 
 ---
 
@@ -48,12 +50,23 @@
       │
       ▼ ✅ 통과
 ⑤ 이미지 메이커 ─► images/ + image_prompts.md
+⑦ 영상 콘텐츠 ───► videos/ + video_plan.md  (영상포함 글만)
       │
       ▼
 ⑥ 조립·발행 ────► output/final_post.md (발행용 완성본)
+      │
+      ▼ (발행 후 D+3 / D+7)
+⑧ 검색 노출·추적 ► tracking_report.md ──피드백──► ① 기획 (개선 루프)
 ```
 
 자세한 내용은 `workflow/pipeline.md` 참고.
+
+## 📅 스케줄 관리 (주 3일 발행)
+
+- **발행 리듬**: 월/수/금 주 3회 — `workflow/content_calendar.md`
+- **콘텐츠 보드**: Google Sheets/Notion 갤러리로 상태 관리 — `templates/content_board.csv`
+- **스케줄 운영·예약발행·리마인더**: `guides/scheduling_guide.md`
+- 콘텐츠 재고 **버퍼 3편** 유지, 발행 3일 전 기획 시작
 
 ---
 
@@ -91,14 +104,19 @@ Claude는 각 단계 산출물을 `output/<주제-slug>/` 폴더에 저장합니
 
 ```
 output/
-  └── <주제-slug>/
-        ├── 1_outline.md
-        ├── 2_seo_plan.md
-        ├── 3_draft.md
-        ├── 4_qa_report.md
-        ├── 5_image_prompts.md
-        ├── images/
-        └── final_post.md
+  ├── <주제-slug>/
+  │     ├── 1_outline.md
+  │     ├── 2_seo_plan.md
+  │     ├── 3_draft.md
+  │     ├── 4_qa_report.md
+  │     ├── 5_image_prompts.md
+  │     ├── 7_video_plan.md      # 영상포함 글
+  │     ├── 8_tracking_report.md # 발행 후 추적
+  │     ├── images/
+  │     ├── videos/
+  │     └── final_post.md
+  └── _weekly/
+        └── <주차>_report.md      # 주간 종합 성과
 ```
 
 ---
@@ -118,3 +136,6 @@ output/
 - `guides/prohibited_expressions.md` — 네이버 광고/저품질 회피용 금지 표현 목록
 - `templates/keyword_map.md` — 키워드 맵 작성 양식
 - `workflow/example_run.md` — 예시 실행 결과 (샘플)
+- `workflow/content_calendar.md` — 주 3일 발행 캘린더
+- `guides/scheduling_guide.md` — 스케줄·콘텐츠 보드·예약발행 운영
+- `templates/content_board.csv` — Google Sheets 콘텐츠 보드 양식
