@@ -65,14 +65,16 @@ def convert(body: str) -> str:
             out.append("</tbody></table>")
             continue
 
-        # 미디어 안내 블록 (> 🖼 / > 🎬 / > 🔗)
+        # 미디어/링크 안내 블록 (> 🖼 / > 🎬 / > 🔗)
+        # 링크는 '사진 올리기'와 성격이 다른 작업이라 색을 분리해 눈에 띄게 한다.
         if s.startswith(">") and re.search(r"🖼|🎬|🔗", s):
+            cls = "linkbox" if "🔗" in s else "media"
             block = []
             while i < n and lines[i].strip().startswith(">"):
                 block.append(lines[i].strip().lstrip(">").strip())
                 i += 1
             out.append(
-                "<p class='media'>"
+                f"<p class='{cls}'>"
                 + "<br>".join(inline(b) for b in block if b)
                 + "</p>"
             )
@@ -144,6 +146,8 @@ TEMPLATE = """<!doctype html>
   #post blockquote {{ border-left: 3px solid #ccc; margin: 16px 0; padding: 2px 0 2px 14px; color: #444; }}
   #post .media {{ background: #eef5ff; border: 1px dashed #8ab4f8; border-radius: 6px;
                  padding: 10px 12px; margin: 18px 0; font-size: 14px; color: #1a4b8c; }}
+  #post .linkbox {{ background: #e8f8ee; border: 2px solid #34a853; border-radius: 6px;
+                   padding: 12px 14px; margin: 22px 0; font-size: 15px; color: #14612f; }}
   #post li {{ margin: 5px 0; }}
   #post hr {{ border: 0; border-top: 1px solid #e5e5e5; margin: 28px 0; }}
   #post code {{ background: #f3f3f3; padding: 1px 5px; border-radius: 3px; font-size: 14px; }}
@@ -153,8 +157,9 @@ TEMPLATE = """<!doctype html>
   <b>네이버에 올리는 법</b><br>
   1. 이 페이지에서 <b>전체 선택</b>(Ctrl/⌘ + A) → <b>복사</b>(Ctrl/⌘ + C)<br>
   2. 네이버 블로그 글쓰기 열고 <b>붙여넣기</b>(Ctrl/⌘ + V) — 표·굵게·소제목이 그대로 들어갑니다<br>
-  3. 파란 박스 자리에 <b>사진·영상을 올리고, 박스는 지웁니다</b><br>
-  4. 맨 아래 태그 입력 → <b>예약 발행</b><br>
+  3. <span style="color:#1a4b8c">파란 박스</span> 자리 → <b>사진·영상 올리고 박스 삭제</b><br>
+  4. <span style="color:#14612f">초록 박스</span> (맨 아래, 마무리 글 다음) → <b>스마트스토어 링크 1개 넣고 박스 삭제</b><br>
+  5. 맨 아래 태그 입력 → <b>예약 발행</b><br>
   <span style="color:#b45309">※ 이 안내문은 복사되어도 네이버에서 지우시면 됩니다.</span>
 </div>
 
