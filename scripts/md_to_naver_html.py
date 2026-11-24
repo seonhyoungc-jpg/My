@@ -28,6 +28,12 @@ def inline(text: str) -> str:
     out = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", out)
     out = re.sub(r"(?<!\w)\[(.+?)\](?!\()", r"<strong>\1</strong>", out)  # [내부링크 제목]
     out = re.sub(r"`(.+?)`", r"<code>\1</code>", out)
+    # 맨 URL을 실제 링크로 (복사해 붙여도 네이버가 링크로 인식하도록)
+    out = re.sub(
+        r"(?<!['\"=>])(https?://[^\s<>\"']+)",
+        r'<a href="\1">\1</a>',
+        out,
+    )
     return out
 
 
