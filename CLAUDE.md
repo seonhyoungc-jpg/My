@@ -100,6 +100,7 @@
 - **양고기 도메인**: `guides/lamb_domain.md` — 램/머튼 구분, 부위, 키워드 전략
 - **식품 광고 규제**: `guides/food_ad_compliance.md` — 금지 표현 치환 사전
 - **자동화 범위**: `workflow/automation_scope.md` — 자동 vs 수동 경계
+- **사진 촬영**: `guides/photo_guide.md` — 폰으로 고기 사진 찍는 법 + 글별 촬영 리스트
 
 ---
 
